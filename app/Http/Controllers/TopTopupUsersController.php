@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TopTopupUsers;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\TopTopupUsers;
 
 class TopTopupUsersController extends Controller
 {
@@ -81,5 +82,28 @@ class TopTopupUsersController extends Controller
     public function destroy(TopTopupUsers $topTopupUsers)
     {
         //
+    }
+
+    /**
+     * Yesterday Top 10 Top Up Users.
+     */
+    public function yesterdayTopTopUpUsers()
+    {
+        $topUpUsers = User::withCount(['topUps' => function ($query) {
+            $query->whereBetween('created_at', [now()->subDays(1)->startOfDay(), now()->subDays(1)->endOfDay()]);
+        }])
+            ->orderByDesc('id')
+            ->take(10)
+            ->get();
+
+        // Erasing previous records
+        TopTopupUsers::truncate();
+        // Top 10 top up user of yesterday
+        foreach ($topUpUsers as $topUpUser) {
+
+            $topTopupUser['user_id'] = $topUpUser['id'];
+            $topTopupUser['count'] = $topUpUser['top_ups_count'];
+            TopTopupUsers::updateOrCreate($topTopupUser);
+        }
     }
 }
