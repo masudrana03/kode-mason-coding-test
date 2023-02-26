@@ -19,5 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/home', function () {
+//     return view('layouts.app');
+// });
+Route::get('/home', function () {
+    return view('dashboard');
+});
+
 Route::get('/hello',[TopUpsController::class, 'index']);
 Route::get('/previous-day-top-10-top-topup-user',[TopTopupUsersController::class, 'yesterdayTopTopUpUsers']);
