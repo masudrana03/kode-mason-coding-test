@@ -16,27 +16,15 @@ use App\Http\Controllers\TopTopupUsersController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::get('/home', function () {
-//     return view('layouts.app');
-// });
-Route::get('/hello',[TopUpsController::class, 'index']);
-
-
-Route::get('/top-top-up-user',[TopTopupUsersController::class, 'index'])->name('top.topUp');
-
-// User routes Search
-Route::get( '/user-search', [TopTopupUsersController::class, 'search'] )->name( 'user.search' );
-
-
-
-
-
-
-Route::get('/home', function () {
     return view('dashboard.index');
 })->name('dashboard');
 
-Route::get('/previous-day-top-10-top-topup-user',[TopTopupUsersController::class, 'yesterdayTopTopUpUsers'])->name('yesterdayTopTopUpUsers');
+
+// User routes Search
+Route::get('/user-search', [TopTopupUsersController::class, 'search'])->name('user.search');
+
+Route::get('/top-top-up-user', [TopTopupUsersController::class, 'index'])->name('top.topUp');
+Route::get('/previous-day-top-10-top-topup-user', [TopTopupUsersController::class, 'yesterdayTopTopUpUsers'])->name('yesterdayTopTopUpUsers');
+
+// only for testing.
+Route::get('/test-job', [TopUpsController::class, 'index']);

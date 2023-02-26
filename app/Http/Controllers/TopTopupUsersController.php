@@ -21,6 +21,9 @@ class TopTopupUsersController extends Controller
     }
 
 
+    /**
+     * Display the search User.
+     */
     public function search()
     {
         $search           = request('search');
@@ -31,72 +34,6 @@ class TopTopupUsersController extends Controller
         })->paginate($defaultPaginate);
 
         return view('top-up.top-up-user-list', compact('topTopUpUsers', 'search'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TopTopupUsers  $topTopupUsers
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TopTopupUsers $topTopupUsers)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TopTopupUsers  $topTopupUsers
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TopTopupUsers $topTopupUsers)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TopTopupUsers  $topTopupUsers
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TopTopupUsers $topTopupUsers)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TopTopupUsers  $topTopupUsers
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TopTopupUsers $topTopupUsers)
-    {
-        //
     }
 
     /**
@@ -120,5 +57,7 @@ class TopTopupUsersController extends Controller
             $topTopupUser['count'] = $topUpUser['top_ups_count'];
             TopTopupUsers::updateOrCreate($topTopupUser);
         }
+
+        return redirect()->back();
     }
 }
