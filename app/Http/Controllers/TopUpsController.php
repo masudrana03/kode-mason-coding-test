@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\TopUps;
 use Illuminate\Http\Request;
+use App\Jobs\FindTopUsersJob;
 
 class TopUpsController extends Controller
 {
@@ -15,22 +16,7 @@ class TopUpsController extends Controller
      */
     public function index()
     {
-        // $topUpUsers = User::withCount(['topUps' => function ($query) {
-        //     $query->whereBetween('created_at', [now()->subDays(1)->startOfDay(), now()->subDays(1)->endOfDay()]);
-        // }])
-        //     ->orderByDesc('id')
-        //     ->take(10)
-        //     ->get();
-
-        // // Top 10 top up user of yesterday
-        // foreach ($topUpUsers as $topUpUser) {
-        //     $user = User::find($topUpUser->id);
-        //     $user->topTopUpUsers()->create([
-        //         'count' => $topUpUser->top_ups_count,
-        //     ]);
-        // }
-
-        // return $topUpUsers;
+        FindTopUsersJob::dispatch();
     }
 
     /**

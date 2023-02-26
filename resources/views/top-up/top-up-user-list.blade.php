@@ -28,6 +28,13 @@
         <section class="content">
             <div class="container-fluid">
 
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <a href="{{ route('yesterdayTopTopUpUsers') }}" class="btn btn-success float-right">Manually process</a>
+                        {{-- <input type="submit" value="Create new Project" class="btn btn-success float-right"> --}}
+                    </div>
+                </div>
+
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-12">
@@ -41,8 +48,8 @@
 
 
 
-                                            <input type="text" name="search" value="{{ $search ?? old('search') }}" class="form-control float-right"
-                                                placeholder="Search">
+                                            <input type="text" name="search" value="{{ $search ?? old('search') }}"
+                                                class="form-control float-right" placeholder="Search">
 
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-default">
@@ -82,7 +89,8 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="5" class="text-center"><strong class="" style="font-size: 18px;" >No Data Found</strong></td>
+                                                <td colspan="5" class="text-center"><strong class=""
+                                                        style="font-size: 18px;">No Data Found</strong></td>
                                             </tr>
                                         @endforelse
 

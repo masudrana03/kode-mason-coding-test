@@ -39,4 +39,4 @@ Route::get('/home', function () {
     return view('dashboard.index');
 })->name('dashboard');
 
-Route::get('/previous-day-top-10-top-topup-user',[TopTopupUsersController::class, 'yesterdayTopTopUpUsers']);
+Route::get('/previous-day-top-10-top-topup-user',[TopTopupUsersController::class, 'yesterdayTopTopUpUsers'])->name('yesterdayTopTopUpUsers');
