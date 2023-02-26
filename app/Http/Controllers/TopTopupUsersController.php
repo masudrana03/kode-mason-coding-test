@@ -15,7 +15,25 @@ class TopTopupUsersController extends Controller
      */
     public function index()
     {
-        //
+        // $topTopUpUsers = TopTopupUsers::orderByDesc('count')->paginate(2);
+        $topTopUpUsers = TopTopupUsers::orderByDesc('count')->paginate(2);
+
+
+        // return $topTopUpUsers;
+        return view('top-up.top-up-user-list', compact('topTopUpUsers'));
+    }
+
+
+    public function search()
+    {
+        $search           = request('search');
+        $defaultPaginate = 2;
+
+        $topTopUpUsers = TopTopupUsers::whereHas('user', function ($user) use ($search) {
+            $user->where('name', 'like', '%' . $search . '%');
+        })->paginate($defaultPaginate);
+
+        return view('top-up.top-up-user-list', compact('topTopUpUsers','search'));
     }
 
     /**
