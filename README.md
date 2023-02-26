@@ -79,10 +79,22 @@ Copy env :
   cp .env.example .env
 ```
 
+Set in to the .env for database connection :
+```bash
+  DB_DATABASE=coding_test_db
+  DB_USERNAME=root
+  DB_PASSWORD=
+```
+
 when database connection is done :
 
 ```bash
   php artisan key:gen
+```
+
+Set in to the .env for queue connection :
+```bash
+  QUEUE_CONNECTION=database
 ```
 
 Know we ready to run the project :
@@ -100,7 +112,7 @@ Know we ready to run the project :
 Import sql file :
 
 ```bash
-  php artisan serve --port=8001
+  coding_test_db.sql
 ```
 
 or
@@ -109,7 +121,6 @@ Run the migration and seeder command :
 ```bash
   php artisan migrate:fresh --seed
 ```
-
 
 # Project Status Check
 
@@ -126,9 +137,9 @@ php artisan schedule:work
 ```
 
 ## Project Ending
+
 This project aimed to develop a web application using Laravel 8 that could efficiently find the top 10 users with the most top-up amounts from the previous day. The project successfully met this goal by implementing a daily scheduled job that used Laravel Eloquent relationships to query the database and store the results in a dedicated table.
 
 During development, I faced several challenges, such as optimizing the database queries to handle a large number of records, but we were able to overcome these obstacles by carefully designing the database schema and using Laravel's built-in features.
 
 Overall, I am proud of the outcome of this project and believe it serves as a useful example of how to leverage Laravel's features to develop efficient and scalable web applications.
-
