@@ -7,11 +7,23 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Assessment Task
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Task Description :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
+Make an efficient web software which finds out the top 10 users who have most topup at the previous day. Make a process that will run every day first hour automatically, and can also initiate the process manually.
+
+### Notes:
+
+Use only three tables with below required fields along with the necessary fields
+
+1. Users (required fields: name, email)
+2. Topups (required fields: users_id, amount)
+3. Top Topup Users (required fields: users_id, count): This table will hold maximum 10 records
+
+For View make only one page, that will show the top topup users with search and in this page make a button that can initiate the process of finding the previous day's top topup users.
+
+<!-- - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
 - Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
 - Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
@@ -19,46 +31,104 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Laravel is accessible, powerful, and provides tools required for large, robust applications. -->
 
-## Learning Laravel
+## Requirements :
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Laravel version 8
+2. Design Database
+3. Maintain Coding Structure
+4. Write Clean Code
+5. Maintain Folder Structure
+6. Use Database Queue Driver
+7. Minimum User Records 500
+8. Minimum Top up Records 200,000 /per day (need only 3 days worth of records)
+9. Make blade template view for top users (show only 2 records per page)
+10. Make a search field to search by user
+11. Make a button that can initiate the top user finding process
+12. For the design you can use bootstrap free AdminLTE template or whichever you like
+13. No need for Authentication
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Project Set Up
 
-## Laravel Sponsors
+### project dependency
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+  "php": "^7.3|^8.0"
+```
 
-### Premium Partners
+git clone to set up this project :
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+  git clone https://github.com/masudrana03/kode-mason-coding-test.git
+```
 
-## Contributing
+```bash
+  cd kode-mason-coding-test
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Install composer :
 
-## Code of Conduct
+```bash
+  composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copy env :
 
-## Security Vulnerabilities
+```bash
+  cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+when database connection is done :
 
-## License
+```bash
+  php artisan key:gen
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Know we ready to run the project :
+
+```bash
+  php artisan serve --port=8001
+```
+
+### One click set up :
+
+```bash
+  git clone https://github.com/masudrana03/kode-mason-coding-test.git ;  cd kode-mason-coding-test; composer install ; cp .env.example .env ; php artisan key:gen ; php artisan serve --port=8001 ;
+```
+
+Import sql file :
+
+```bash
+  php artisan serve --port=8001
+```
+
+or
+Run the migration and seeder command :
+
+```bash
+  php artisan migrate:fresh --seed
+```
+
+
+# Project Status Check
+
+### To check the queue is working :
+
+```bash
+php artisan queue:work
+```
+
+### To check the schedule is working :
+
+```bash
+php artisan schedule:work
+```
+
+## Project Ending
+This project aimed to develop a web application using Laravel 8 that could efficiently find the top 10 users with the most top-up amounts from the previous day. The project successfully met this goal by implementing a daily scheduled job that used Laravel Eloquent relationships to query the database and store the results in a dedicated table.
+
+During development, I faced several challenges, such as optimizing the database queries to handle a large number of records, but we were able to overcome these obstacles by carefully designing the database schema and using Laravel's built-in features.
+
+Overall, I am proud of the outcome of this project and believe it serves as a useful example of how to leverage Laravel's features to develop efficient and scalable web applications.
+
